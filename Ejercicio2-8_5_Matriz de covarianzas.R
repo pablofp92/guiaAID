@@ -52,4 +52,3 @@ matriz_varianzas2 = var(df2)
 
 # 8. Hallar la traza de las cuatro matrices calculadas, explicando el significado de cada uno de los resultados obtenidos. ¿Qué trazas no aumentan al agregar una variable?
 
-#La traza se calcula como sum(diag(Matriz)) no tengo idea el significado de los resultados.... 
