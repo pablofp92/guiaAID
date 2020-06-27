@@ -14,22 +14,20 @@ pca <- prcomp(df, scale. = TRUE )
 #2. Graficar las cargas y explicar la interpretación de las componentes principales.
 
 summary(pca)
+carga.1 = pca$rotation[,1]
+carga.2 = pca$rotation[,2]
+columnas = factor(colnames(df))
+data = data.frame(cbind(carga.1, carga.2))
 
-#No se como graficar las cargas
-cargas = data.frame(pca$rotation)
-cargas$var = rownames(cargas)
+ggplot(data, aes(x=columnas, y=carga.1))+
+  geom_bar(stat = 'identity', position = 'dodge', fill = 'royalblue', size=0.5)
 
-ggplot(cargas, aes(var, PC1))+
-  geom_col() 
+# La componente 1 separa las distintas variables. Podríamos llamarla "Clase" del servicio
 
-ggplot(cargas, aes(var, PC2))+
-  geom_col() 
+ggplot(data, aes(x=columnas, y=carga.2))+
+  geom_bar(stat = 'identity', position = 'dodge', fill = 'royalblue', size=0.5)
 
-ggplot(cargas, aes(var, PC3))+
-  geom_col() 
-
-ggplot(cargas, aes(var, PC4))+
-  geom_col() 
+# La componente 2 es toda positiva, daría indicación del "Tamaño" del servicio
 
 # 3 ¿Qué porcentaje de variabilidad logra captar cada una de ellas? Graficar el scree plot
 
